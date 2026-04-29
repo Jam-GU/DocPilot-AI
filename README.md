@@ -1,4 +1,4 @@
-# AI 文档生成 Agent
+# DocPilot AI
 
 这是一个从代码注释和设计文档自动生成技术文档的 Agent 原型，支持多人协作状态记录，并可在 PR 合并后自动刷新文档。
 
@@ -9,7 +9,7 @@
 - 在 PR 合并时自动更新文档，降低人工维护成本
 - 记录多人协作过程中的贡献者、评审人、审批和备注
 
-这个版本按你给的业务背景来设计：团队约 15 人使用，目标是每月节省约 120 小时文档维护时间，并把文档更新及时率稳定在 95% 左右。
+这个版本按业务背景来设计：团队约 15 人使用，目标是每月节省约 120 小时文档维护时间，并把文档更新及时率稳定在 95% 左右。
 
 ## 目录结构
 
@@ -43,11 +43,7 @@
 ### 2. 多人协作模式
 
 - 每次生成文档会创建一个协作 session
-- session 中记录：
-  - contributors
-  - reviewers
-  - notes
-  - approvals
+- session 中记录 contributors、reviewers、notes、approvals
 - 可通过接口追加评审意见
 
 ### 3. PR 合并自动更新
@@ -68,13 +64,13 @@ npm start
 默认监听：
 
 ```text
-http://localhost:3100
+http://127.0.0.1:3100
 ```
 
 ### 手动生成文档
 
 ```bash
-curl -X POST http://localhost:3100/api/generate \
+curl -X POST http://127.0.0.1:3100/api/generate \
   -H "Content-Type: application/json" \
   -d '{
     "title": "AI 文档生成 Agent",
@@ -87,7 +83,7 @@ curl -X POST http://localhost:3100/api/generate \
 ### 追加协作评审
 
 ```bash
-curl -X POST http://localhost:3100/api/review \
+curl -X POST http://127.0.0.1:3100/api/review \
   -H "Content-Type: application/json" \
   -d '{
     "sessionId": "session_xxx",
