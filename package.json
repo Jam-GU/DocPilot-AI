@@ -1,0 +1,13 @@
+{
+  "name": "ai-doc-agent",
+  "version": "0.1.0",
+  "description": "AI-powered documentation agent for generating and updating technical docs from code comments and design docs.",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  }
+}

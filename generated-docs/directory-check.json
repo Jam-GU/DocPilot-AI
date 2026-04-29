@@ -1,0 +1,28 @@
+{
+  "docId": "directory-check",
+  "title": "Directory Check",
+  "generatedAt": "2026-04-29T03:26:48.142Z",
+  "sources": [
+    ".github/workflows/update-docs.yml",
+    "README.md",
+    "generated-docs/directory-check.md",
+    "generated-docs/latest-pr-update.md",
+    "generated-docs/pr-18.md",
+    "generated-docs/test-documentation.md",
+    "prompts/system.md",
+    "prompts/user-template.md",
+    "scripts/run-pr-update.js",
+    "src/collaboration-store.js",
+    "src/config.js",
+    "src/doc-agent.js",
+    "src/index.js",
+    "src/llm-provider.js",
+    "src/markdown-renderer.js",
+    "src/parsers.js",
+    "src/repository-scanner.js",
+    "src/utils.js",
+    "test/doc-agent.test.js",
+    "test/server.test.js"
+  ],
+  "collaborationId": "session_1777433208139"
+}

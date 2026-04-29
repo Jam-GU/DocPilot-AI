@@ -1,0 +1,42 @@
+name: Update Technical Docs
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  update-docs:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Collect changed files
+        id: diff
+        run: |
+          git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.merge_commit_sha }} > changed-files.txt
+          tr '\n' ' ' < changed-files.txt > changed-files-inline.txt
+
+      - name: Generate docs
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          CHANGED_FILES="$(cat changed-files-inline.txt)"
+          node scripts/run-pr-update.js $CHANGED_FILES
+
+      - name: Commit generated docs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add generated-docs .agent-data
+          git diff --cached --quiet || git commit -m "docs: refresh generated technical docs"
+          git push
