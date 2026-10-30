@@ -151,3 +151,5 @@ DOC_AGENT_DESIGN_DOC_DIR=design
 3. 接入 PR diff API，获取真实 changed files
 4. 补充文档模板分类，例如架构文档、接口文档、变更记录
 5. 接入企业 IM 或评论系统，形成多人协作闭环
+
+测试改动：为 Entire Code review 试运行添加一行说明。
